@@ -16,4 +16,9 @@ public class ThreePairedCrew extends PairedCrew {
                 Objects.equals(this.secondCrew, secondCrew) &&
                 Objects.equals(this.thirdCrew, thirdCrew);
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + " : " + thirdCrew;
+    }
 }

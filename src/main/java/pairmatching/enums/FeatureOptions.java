@@ -18,10 +18,11 @@ public enum FeatureOptions {
         return content;
     }
 
-    public void validate(String answer) {
-        if (!answer.equals(PAIR_MATCHING) && !answer.equals(PAIR_CHECK) && !answer.equals(PAIR_RESET) && !answer.equals(
-                QUIT)) {
+    public static String validate(String answer) {
+        if (!answer.equals(PAIR_MATCHING.option) && !answer.equals(PAIR_CHECK.option) && !answer.equals(
+                PAIR_RESET.option) && !answer.equals(QUIT.option)) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_ANSWER.valueOf());
         }
+        return answer;
     }
 }

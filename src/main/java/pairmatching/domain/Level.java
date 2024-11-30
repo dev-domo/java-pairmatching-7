@@ -19,8 +19,14 @@ public enum Level {
         this.missions = missions;
     }
 
-    public void savePairedCrew(String firstCrew, String secondCrew) {
+    public void savePairedCrew(String firstCrew, String secondCrew, String missionName) {
         pairedCrews.add(new PairedCrew(firstCrew, secondCrew));
+        Mission.valueOf(missionName).savePairedCrew(new PairedCrew(firstCrew, secondCrew));
+    }
+
+    public void savePairedCrew(String firstCrew, String secondCrew, String thirdCrew, String missionName) {
+        pairedCrews.add(new ThreePairedCrew(firstCrew, secondCrew, thirdCrew));
+        Mission.valueOf(missionName).savePairedCrew(new ThreePairedCrew(firstCrew, secondCrew, thirdCrew));
     }
 
     public boolean checkAlreadyPaired(String firstCrew, String secondCrew) {
@@ -41,7 +47,9 @@ public enum Level {
         return false;
     }
 
-    public void resetPairMatching() {
-        pairedCrews.clear();
+    public static void resetPairMatching() {
+        for (Level level : Level.values()) {
+            level.pairedCrews.clear();
+        }
     }
 }

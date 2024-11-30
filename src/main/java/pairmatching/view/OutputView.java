@@ -1,5 +1,7 @@
 package pairmatching.view;
 
+import java.util.List;
+import pairmatching.domain.PairedCrew;
 import pairmatching.enums.FeatureOptions;
 import pairmatching.enums.OutputMessage;
 
@@ -25,8 +27,10 @@ public class OutputView {
         System.out.println(OutputMessage.REMATCH.valueOf());
     }
 
-    public void showPairMatchingResult() {
-
+    public void showPairMatchingResult(List<PairedCrew> pairedCrews) {
+        for (PairedCrew pairedCrew : pairedCrews) {
+            System.out.println(pairedCrew.toString() + "\n");
+        }
     }
 
     public void promptForReset() {

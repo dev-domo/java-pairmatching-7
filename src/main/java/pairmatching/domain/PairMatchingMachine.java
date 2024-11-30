@@ -12,15 +12,16 @@ public class PairMatchingMachine {
         this.crews = crews;
     }
 
-    public void match(Level level) {
+    public void match(Level level, String missionName) {
         List<String> shuffledCrews = doMatch(level);
         int crewSize = shuffledCrews.size();
 
         for (int i = 0; i < shuffledCrews.size() - 1; i += 2) {
             if (i == crewSize - 3) {
-                level.checkAlreadyPaired(shuffledCrews.get(i), shuffledCrews.get(i + 1), shuffledCrews.get(i + 2));
+                level.savePairedCrew(shuffledCrews.get(i), shuffledCrews.get(i + 1), shuffledCrews.get(i + 2),
+                        missionName);
             }
-            level.savePairedCrew(shuffledCrews.get(i), shuffledCrews.get(i + 1));
+            level.savePairedCrew(shuffledCrews.get(i), shuffledCrews.get(i + 1), missionName);
         }
     }
 
