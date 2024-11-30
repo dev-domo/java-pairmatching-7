@@ -16,7 +16,7 @@ public record SelectionDto(Course course, Level level, String missionName) {
         Level level = Level.findByName(split[1])
                 .orElseThrow(() -> new CustomException(ErrorMessage.INVALID_LEVEL_OF_SELECTION));
         String mission = MissionMapper.findByLevelAndMissionName(level, split[2])
-                .orElseThrow(() -> new CustomException(ErrorMessage.INVALID_LEVEL_OF_SELECTION));
+                .orElseThrow(() -> new CustomException(ErrorMessage.INVALID_MISSION_OF_SELECTION));
         return new SelectionDto(course, level, mission);
     }
 
