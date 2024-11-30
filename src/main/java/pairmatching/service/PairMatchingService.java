@@ -111,7 +111,7 @@ public class PairMatchingService {
     }
 
     public void resetMatchingHistory(){
-
+        pairMatchingHistory.allClearHistory();
     }
 
 }
