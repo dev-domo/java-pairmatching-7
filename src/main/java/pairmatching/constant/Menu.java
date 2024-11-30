@@ -1,5 +1,8 @@
 package pairmatching.constant;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public enum Menu {
 
     DO_PAIR_MATCHING("1", "페어 매칭"),
@@ -18,5 +21,11 @@ public enum Menu {
     @Override
     public String toString() {
         return number + ". " + name;
+    }
+
+    public static String getMenus() {
+        return Arrays.stream(values())
+                .map(Menu::toString)
+                .collect(Collectors.joining("\n"));
     }
 }
