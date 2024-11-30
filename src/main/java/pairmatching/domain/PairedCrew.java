@@ -5,8 +5,8 @@ import java.util.Objects;
 public class PairedCrew {
     private static final String NAME_SEPARATOR = " : ";
 
-    private final String firstCrew;
-    private final String secondCrew;
+    protected final String firstCrew;
+    protected final String secondCrew;
 
     public PairedCrew(final String firstCrew, final String secondCrew) {
         this.firstCrew = firstCrew;
@@ -15,6 +15,10 @@ public class PairedCrew {
 
     public boolean isEqualCrews(String firstCrew, String secondCrew) {
         return Objects.equals(this.firstCrew, firstCrew) && Objects.equals(this.secondCrew, secondCrew);
+    }
+
+    public boolean isEqualCrews(String firstCrew, String secondCrew, String thirdCrew) {
+        return false;
     }
 
     @Override
