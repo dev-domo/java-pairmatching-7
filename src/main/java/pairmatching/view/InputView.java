@@ -1,2 +1,10 @@
-package pairmatching.view;public class InputView {
+package pairmatching.view;
+
+import camp.nextstep.edu.missionutils.Console;
+
+public class InputView {
+
+    public String inputAnswer() {
+        return Console.readLine();
+    }
 }
