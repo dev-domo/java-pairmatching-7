@@ -27,4 +27,8 @@ public class OutputView {
         System.out.println("\n페어 매칭 결과입니다.");
         results.forEach(result -> System.out.println(result.toString()));
     }
+
+    public static void printMatchingClearComplete() {
+        System.out.println("초기화 되었습니다.");
+    }
 }

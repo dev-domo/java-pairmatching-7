@@ -8,7 +8,7 @@ public enum Menu {
 
     DO_PAIR_MATCHING("1", "페어 매칭"),
     GET_PAIR_MATCHING("2", "페어 조회"),
-    INIT_PAIR_MATCHING("3", "페어 초기화"),
+    CLEAR_PAIR_MATCHING("3", "페어 초기화"),
     QUIT("Q", "종료");
 
     private final String number;
