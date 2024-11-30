@@ -2,13 +2,14 @@ package pairmatching.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
-public class CrewTest {
+public class CrewsTest {
     @Test
-    void 크루_생성() {
-        Crew crew = new Crew(Course.BACKEND, "포비");
+    void Crews_생성() {
+        Crews crews = new Crews(List.of(new Crew(Course.BACKEND, "포비"), new Crew(Course.BACKEND, "승준")));
 
-        assertThat(crew).isEqualTo(new Crew(Course.BACKEND, "포비"));
+        assertThat(crews).isEqualTo(new Crews(List.of(new Crew(Course.BACKEND, "포비"), new Crew(Course.BACKEND, "승준"))));
     }
 }
