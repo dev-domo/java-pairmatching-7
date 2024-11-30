@@ -2,7 +2,6 @@ package pairmatching.constant;
 
 import java.util.HashMap;
 import java.util.Map;
-import pairmatching.PairMatching;
 
 public class MissionMapper {
 

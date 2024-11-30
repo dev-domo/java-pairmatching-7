@@ -1,12 +1,12 @@
-package pairmatching;
+package pairmatching.reader;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pairmatching.constant.Course;
+import pairmatching.domain.Crew;
 
 class FrontEndCrewReaderTest {
 

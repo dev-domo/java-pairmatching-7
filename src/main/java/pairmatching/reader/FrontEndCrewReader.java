@@ -1,10 +1,11 @@
-package pairmatching;
+package pairmatching.reader;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.List;
 import java.util.stream.Collectors;
+import pairmatching.domain.Crew;
 import pairmatching.constant.Course;
 
 public class FrontEndCrewReader {

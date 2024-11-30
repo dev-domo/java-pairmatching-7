@@ -1,4 +1,4 @@
-package pairmatching;
+package pairmatching.domain;
 
 import pairmatching.constant.Course;
 import pairmatching.exception.CustomException;
