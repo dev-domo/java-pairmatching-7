@@ -7,6 +7,7 @@ import pairmatching.domain.Crew;
 import pairmatching.dto.PairMatchingResult;
 import pairmatching.dto.SelectionDto;
 import pairmatching.repository.CrewRepository;
+import pairmatching.repository.PairMatchingRepository;
 import pairmatching.view.InputView;
 import pairmatching.view.OutputView;
 
@@ -16,6 +17,14 @@ public class DoPairMatchingService implements PairMatchingService {
     public void doService() {
         OutputView.printMatchingSelections();
         SelectionDto selectionDto = InputView.getSelectionDto();
+
+        List<PairMatchingResult> savedMatching = PairMatchingRepository.getInstance().get(selectionDto);
+        if (savedMatching != null) {
+            boolean reMatchingAnswer = InputView.getReMatchingAnswer();
+            if (!reMatchingAnswer) {
+                return;
+            }
+        }
 
         List<Crew> crews = CrewRepository.getInstance().get(selectionDto.course());
         List<Crew> shuffledCrews = Randoms.shuffle(crews);
@@ -28,6 +37,7 @@ public class DoPairMatchingService implements PairMatchingService {
         if (shuffledCrews.size() % 2 != 0) {
             results.getLast().add(shuffledCrews.getLast());
         }
+        PairMatchingRepository.getInstance().save(selectionDto, results);
         OutputView.printMatchingResult(results);
     }
 }

@@ -47,5 +47,29 @@ public class InputView {
         }
     }
 
+    public static boolean getReMatchingAnswer() {
+        Boolean yesOrNo = null;
+        while (yesOrNo == null) {
+            System.out.println("매칭 정보가 있습니다. 다시 매칭하시겠습니까?\n네 | 아니오");
+            yesOrNo = getYesOrNo();
+        }
+        return yesOrNo;
+    }
 
+    private static Boolean getYesOrNo() {
+        try {
+            return enterYesOrNo();
+        } catch (CustomException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    private static boolean enterYesOrNo() {
+        String answer = Console.readLine();
+        if (!(answer.equals("네") || answer.equals("아니오"))) {
+            throw new CustomException(ErrorMessage.INVALID_YES_OR_NO);
+        }
+        return answer.equals("네");
+    }
 }
