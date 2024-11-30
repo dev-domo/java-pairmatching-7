@@ -54,8 +54,8 @@ public class PairResult {
     @Override
     public String toString() {
         StringBuilder printout = new StringBuilder();
-        for(PairMember pairCrew: this.pairCrews) {
-            printout.append(pairCrew.toString());
+        for(PairMember pairMember: this.pairCrews) {
+            printout.append(pairMember);
             printout.append("\n");
         }
         return printout.toString();

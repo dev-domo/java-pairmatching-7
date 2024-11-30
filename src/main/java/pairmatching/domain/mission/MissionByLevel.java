@@ -13,6 +13,10 @@ public class MissionByLevel {
         missions = new EnumMap<>(Level.class);
     }
 
+    public void addLevelAndMission(Level level,Missions missionList){
+        missions.put(level,missionList);
+    }
+
     public void addMission(Level level, String mission) {
         missions.get(level).addMission(mission);
     }
@@ -26,6 +30,22 @@ public class MissionByLevel {
             }
         }
         throw new IllegalArgumentException("존재하지 않는 미션입니다.");
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder printOut = new StringBuilder();
+        printOut.append("#############################################\n");
+        printOut.append("과정: 백엔드 | 프론트엔드\n");
+        printOut.append("미션:\n");
+        for(Map.Entry<Level,Missions> entry : missions.entrySet()) {
+            Level level = entry.getKey();
+            Missions missions = entry.getValue();
+            printOut.append(String.format(
+                    "  - %s: %s\n",level.getName(),missions));
+        }
+        printOut.append("#############################################\n");
+        return printOut.toString();
     }
 
 }

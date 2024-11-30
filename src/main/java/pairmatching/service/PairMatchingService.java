@@ -10,6 +10,8 @@ import pairmatching.domain.helper.PairMemberMather;
 import pairmatching.domain.mission.MissionByLevel;
 import pairmatching.domain.pair.PairMatchingHistory;
 import pairmatching.domain.pair.PairResult;
+import pairmatching.domain.reader.BackendReader;
+import pairmatching.domain.reader.FrontendReader;
 
 public class PairMatchingService {
     private final PairMatchingHistory pairMatchingHistory;
@@ -18,9 +20,12 @@ public class PairMatchingService {
     private final MissionMatcher missionMatcher;
     private final PairMemberMather pairMemberMather;
 
-    public PairMatchingService(PairMatchingHistory pairMatchingHistory, CrewsByCourse crewsByCourse, MissionByLevel missions) {
-        this.pairMatchingHistory = pairMatchingHistory;
-        this.crewsByCourse = crewsByCourse;
+    public PairMatchingService(MissionByLevel missions) {
+        this.pairMatchingHistory = new PairMatchingHistory();
+        this.crewsByCourse = new CrewsByCourse(
+                new BackendReader(),
+                new FrontendReader()
+        );
         this.missions = missions;
 
         this.missionMatcher = new MissionMatcher();
@@ -51,7 +56,6 @@ public class PairMatchingService {
             //note 다시 매칭
             matching(newPairResult,true);
         }
-        //다시 입력받기
     }
 
     /**
@@ -77,6 +81,7 @@ public class PairMatchingService {
         while (count > 0) {
             matchByCourse(newPairResult,isAgain);
             if(!pairMatchingHistory.haveDuplicateCrewPairAtSameLevel(newPairResult)){
+                pairMatchingHistory.addPairMissionType(newPairResult);
                 return;
             }
             count --;

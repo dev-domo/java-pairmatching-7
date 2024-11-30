@@ -1,5 +1,6 @@
 package pairmatching.domain.pair;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import pairmatching.domain.Crew;
@@ -41,7 +42,11 @@ public class PairMember {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append(String.join(" | ",crews.toString()));
+        List<String> crewName = new ArrayList<>(crews.size());
+        for(Crew crew : crews) {
+            crewName.add(crew.toString());
+        }
+        builder.append(String.join(" | ",crewName));
         return builder.toString();
     }
 

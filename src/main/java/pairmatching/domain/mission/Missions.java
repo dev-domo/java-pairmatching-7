@@ -18,4 +18,9 @@ public class Missions {
         return missions.stream().filter(m -> m.equals(mission)).findFirst();
     }
 
+    @Override
+    public String toString() {
+        return String.join(" | ", missions);
+    }
+
 }
