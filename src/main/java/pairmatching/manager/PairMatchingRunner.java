@@ -11,13 +11,12 @@ public class PairMatchingRunner {
     }
 
     public void run() {
-        OutputView.printMenus();
         while (true) {
+            OutputView.printMenus();
             Menu menu = InputView.getMenu();
             if (menu == Menu.QUIT) {
                 break;
             }
-
             ServiceMapper.doService(menu);
         }
     }

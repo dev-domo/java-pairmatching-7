@@ -12,11 +12,12 @@ public class OutputView {
     }
 
     public static void printMenus() {
+        System.out.println("\n기능을 선택하세요.");
         System.out.println(Menu.getMenus());
     }
 
     public static void printMatchingSelections() {
-        System.out.println("#############################################");
+        System.out.println("\n#############################################");
         System.out.println("과정: " + Course.getCourses());
         System.out.println("미션:\n" + MissionMapper.getMissions());
         System.out.println("#############################################");
