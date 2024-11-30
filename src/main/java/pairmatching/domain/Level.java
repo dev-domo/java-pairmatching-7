@@ -31,4 +31,8 @@ public enum Level {
         }
         return false;
     }
+
+    public static void resetPairMatching() {
+        pairedCrews.clear();
+    }
 }
