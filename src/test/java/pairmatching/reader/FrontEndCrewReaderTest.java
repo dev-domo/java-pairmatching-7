@@ -5,8 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pairmatching.constant.Course;
-import pairmatching.domain.Crew;
 
 class FrontEndCrewReaderTest {
 
@@ -16,7 +14,7 @@ class FrontEndCrewReaderTest {
         // given
         FrontEndCrewReader reader = new FrontEndCrewReader();
         // when
-        List<Crew> crews = reader.read();
+        List<String> crews = reader.read();
         // then
         assertThat(crews)
                 .size().isEqualTo(15);
@@ -28,10 +26,9 @@ class FrontEndCrewReaderTest {
         // given
         FrontEndCrewReader reader = new FrontEndCrewReader();
         // when
-        List<Crew> crews = reader.read();
+        List<String> crews = reader.read();
         // then
-        assertThat(crews.get(0))
-                .hasFieldOrPropertyWithValue("name", "보노")
-                .hasFieldOrPropertyWithValue("course", Course.FRONTEND);
+        assertThat(crews)
+                .contains("보노", "라라");
     }
 }

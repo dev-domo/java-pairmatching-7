@@ -3,7 +3,6 @@ package pairmatching.manager.service;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import pairmatching.domain.Crew;
 import pairmatching.dto.PairMatchingResult;
 import pairmatching.dto.SelectionDto;
 import pairmatching.repository.CrewRepository;
@@ -26,8 +25,8 @@ public class DoPairMatchingService implements PairMatchingService {
             }
         }
 
-        List<Crew> crews = CrewRepository.getInstance().get(selectionDto.course());
-        List<Crew> shuffledCrews = Randoms.shuffle(crews);
+        List<String> crews = CrewRepository.getInstance().get(selectionDto.course());
+        List<String> shuffledCrews = Randoms.shuffle(crews);
 
         List<PairMatchingResult> results = new ArrayList<>();
         for (int i = 2; i <= shuffledCrews.size(); i += 2) {

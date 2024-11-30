@@ -6,13 +6,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import pairmatching.constant.Course;
-import pairmatching.domain.Crew;
 
 public enum CrewRepository {
 
     CREW_REPOSITORY;
 
-    private static final Map<Course, List<Crew>> CREWS = new HashMap<>();
+    private static final Map<Course, List<String>> CREWS = new HashMap<>();
 
     static {
         Arrays.stream(Course.values())
@@ -23,11 +22,11 @@ public enum CrewRepository {
         return CREW_REPOSITORY;
     }
 
-    public void save(Course course, List<Crew> crews) {
+    public void save(Course course, List<String> crews) {
         CREWS.put(course, crews);
     }
 
-    public List<Crew> get(Course course) {
+    public List<String> get(Course course) {
         return CREWS.get(course);
     }
 

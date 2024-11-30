@@ -1,19 +1,17 @@
 package pairmatching.dto;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import pairmatching.domain.Crew;
 import pairmatching.exception.CustomException;
 import pairmatching.exception.ErrorMessage;
 
-public record PairMatchingResult(List<Crew> crews) {
+public record PairMatchingResult(List<String> crews) {
 
-    public PairMatchingResult(List<Crew> crews) {
+    public PairMatchingResult(List<String> crews) {
         validateSize(crews);
         this.crews = crews;
     }
 
-    private static void validateSize(List<Crew> crew) {
+    private static void validateSize(List<String> crew) {
         if (crew.size() > 3) {
             throw new CustomException(ErrorMessage.INVALID_MATCHING_SIZE);
         }
@@ -21,10 +19,10 @@ public record PairMatchingResult(List<Crew> crews) {
 
     @Override
     public String toString() {
-        return crews.stream().map(Crew::toString).collect(Collectors.joining(" : "));
+        return String.join(" : ", crews);
     }
 
-    public void add(Crew crew) {
+    public void add(String crew) {
         crews.add(crew);
     }
 }
