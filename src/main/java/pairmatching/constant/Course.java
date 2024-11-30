@@ -1,6 +1,7 @@
 package pairmatching.constant;
 
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public enum Course {
@@ -23,5 +24,11 @@ public enum Course {
         return Arrays.stream(values())
                 .map(Course::toString)
                 .collect(Collectors.joining(" | "));
+    }
+
+    public static Optional<Course> findByName(String name) {
+        return Arrays.stream(values())
+                .filter(course -> course.name.equals(name))
+                .findAny();
     }
 }

@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class MissionMapper {
@@ -35,5 +36,11 @@ public class MissionMapper {
     private static String getMissions(Level level) {
         return "  - " + level.toString() + ": " +
                 String.join(" | ", MAPPER.get(level));
+    }
+
+    public static Optional<String> findByLevelAndMissionName(Level level, String missionName) {
+        return MAPPER.get(level).stream()
+                .filter(mission -> mission.equals(missionName))
+                .findAny();
     }
 }

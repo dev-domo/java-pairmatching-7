@@ -1,5 +1,8 @@
 package pairmatching.constant;
 
+import java.util.Arrays;
+import java.util.Optional;
+
 public enum Level {
 
     LEVEL1("레벨1"),
@@ -17,5 +20,11 @@ public enum Level {
     @Override
     public String toString() {
         return name;
+    }
+
+    public static Optional<Level> findByName(String name) {
+        return Arrays.stream(values())
+                .filter(level -> level.name.equals(name))
+                .findAny();
     }
 }

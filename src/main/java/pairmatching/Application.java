@@ -1,7 +1,15 @@
 package pairmatching;
 
+import pairmatching.exception.CustomException;
+import pairmatching.manager.PairMatchingRunner;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO 구현 진행
+        try {
+            PairMatchingRunner runner = new PairMatchingRunner();
+            runner.run();
+        } catch (CustomException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
