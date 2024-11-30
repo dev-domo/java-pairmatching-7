@@ -26,9 +26,12 @@ public class BackendReader {
 
                 result.add(new Crew(Course.BACKEND,name));
             }
+            /*
             if(result.size() != crewsForCheckDuplication.size()){
                 throw new IllegalArgumentException("벡엔드 멤버 중독");
             }
+
+             */
 
         } catch (IllegalArgumentException e){
             throw new IllegalArgumentException(e);

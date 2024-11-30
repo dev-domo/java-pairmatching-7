@@ -25,9 +25,12 @@ public class FrontendReader {
 
                 result.add(new Crew(Course.FRONTEND,name));
             }
+            /*
             if(result.size() != crewsForCheckDuplication.size()){
                 throw new IllegalArgumentException("벡엔드 멤버 중독");
             }
+
+             */
 
         } catch (IllegalArgumentException e){
             throw new IllegalArgumentException(e);
