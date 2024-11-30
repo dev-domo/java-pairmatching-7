@@ -1,12 +1,14 @@
 package pairmatching.view;
 
-import camp.nextstep.edu.missionutils.Console;
+import java.util.Scanner;
 import pairmatching.constant.Menu;
 import pairmatching.dto.SelectionDto;
 import pairmatching.exception.CustomException;
 import pairmatching.exception.ErrorMessage;
 
 public class InputView {
+
+    private static final Scanner SCAN = new Scanner(System.in);
 
     private InputView() {
     }
@@ -21,7 +23,7 @@ public class InputView {
 
     private static Menu enterMenu() {
         try {
-            return Menu.get(Console.readLine())
+            return Menu.get(SCAN.nextLine())
                     .orElseThrow(() -> new CustomException(ErrorMessage.INVALID_MENU));
         } catch (CustomException e) {
             System.out.println(e.getMessage());
@@ -40,7 +42,7 @@ public class InputView {
 
     private static SelectionDto enterSelection() {
         try {
-            return SelectionDto.from(Console.readLine());
+            return SelectionDto.from(SCAN.nextLine());
         } catch (CustomException e) {
             System.out.println(e.getMessage());
             return null;
@@ -66,7 +68,7 @@ public class InputView {
     }
 
     private static boolean enterYesOrNo() {
-        String answer = Console.readLine();
+        String answer = SCAN.nextLine();
         if (!(answer.equals("네") || answer.equals("아니오"))) {
             throw new CustomException(ErrorMessage.INVALID_YES_OR_NO);
         }
