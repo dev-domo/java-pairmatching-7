@@ -41,9 +41,7 @@ public class PairMember {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        for(Crew crew : crews) {
-            builder.append(crew.toString());
-        }
+        builder.append(String.join(" | ",crews.toString()));
         return builder.toString();
     }
 

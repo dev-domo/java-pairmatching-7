@@ -33,6 +33,7 @@ public class PairMatchingService {
      * 만약 같은 미션이 있으면 출력하기
      */
 
+    //note 둘 다 쓰일 수 있음, 등록하고 출력
     public PairResult makePairResult(String inputCourse, String inputLevel, String inputMission){
         Course course = Course.find(inputCourse);
         Level level = Level.find(inputLevel);
@@ -41,14 +42,14 @@ public class PairMatchingService {
         return new PairResult(course, level, mission);
     }
 
-    public boolean isDuplicateMission(PairResult pairResult){
-        return pairMatchingHistory.isContainSameMissionType(pairResult);
+    public boolean isDuplicateMission(PairResult newPairResult){
+        return pairMatchingHistory.isContainSameMissionType(newPairResult);
     }
 
-    public void handleDuplicateMission(Answer answer,PairResult pairResult){
+    public void handleDuplicateMission(Answer answer,PairResult newPairResult){
         if(answer.isYes()){
             //note 다시 매칭
-            matching(pairResult,true);
+            matching(newPairResult,true);
         }
         //다시 입력받기
     }
@@ -58,7 +59,7 @@ public class PairMatchingService {
      * 아니오면 처음부터 다시 입력받기
      */
 
-    public void matching(PairResult pairResult,boolean isAgain){
+    public void matching(PairResult newPairResult,boolean isAgain){
         /**
          * true = 만약 중복이 된 미션이라 중복이면 해당 PairResult을 찾아서 인원만 업데이트해야하낟.
          * false = 아예 히스토리에 새롭게 추가한다.
@@ -74,16 +75,18 @@ public class PairMatchingService {
          */
         int count = 3;
         while (count > 0) {
-            matchByCourse(pairResult,isAgain);
-            //note 확인하고 return
+            matchByCourse(newPairResult,isAgain);
+            if(!pairMatchingHistory.haveDuplicateCrewPairAtSameLevel(newPairResult)){
+                return;
+            }
             count --;
         }
         throw new IllegalArgumentException("매칭 가능한 경우의 수가 없습니다.?????");
     }
 
-    private void matchByCourse(PairResult pairResult, boolean isAgain) {
+    private void matchByCourse(PairResult newPairResult, boolean isAgain) {
         if(isAgain){
-            Optional<PairResult> sameHistory = pairMatchingHistory.findByPairResult(pairResult);
+            Optional<PairResult> sameHistory = pairMatchingHistory.findByPairResult(newPairResult);
             //note 초기화 해줘야ㅎ됨
             if(sameHistory.isPresent()){
                 PairResult sameHistoryResult = sameHistory.get();
@@ -92,11 +95,19 @@ public class PairMatchingService {
             }
             return;
         }
-        crewsByCourse.matchCrewPair(pairResult,pairMemberMather);
+        crewsByCourse.matchCrewPair(newPairResult,pairMemberMather);
     }
 
-    public void printMatching(){
 
+    ////////////
+
+
+    public PairResult printMatching(PairResult newPairResult){
+        Optional<PairResult> sameHistory = pairMatchingHistory.findByPairResult(newPairResult);
+        if(sameHistory.isPresent()){
+            return sameHistory.get();
+        }
+        throw new IllegalArgumentException("매칭 이력이 없습니다.");
     }
 
     public void resetMatchingHistory(){

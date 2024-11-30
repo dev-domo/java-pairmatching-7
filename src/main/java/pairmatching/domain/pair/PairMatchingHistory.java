@@ -45,4 +45,8 @@ public class PairMatchingHistory {
         }
         return Optional.empty();
     }
+
+    public void allClearHistory(){
+        this.pairResults.clear();
+    }
 }

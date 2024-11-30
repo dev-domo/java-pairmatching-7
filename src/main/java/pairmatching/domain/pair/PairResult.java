@@ -51,6 +51,16 @@ public class PairResult {
         this.pairCrews.clear();
     }
 
+    @Override
+    public String toString() {
+        StringBuilder printout = new StringBuilder();
+        for(PairMember pairCrew: this.pairCrews) {
+            printout.append(pairCrew.toString());
+            printout.append("\n");
+        }
+        return printout.toString();
+    }
+
 
 
 
