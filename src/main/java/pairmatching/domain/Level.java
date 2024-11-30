@@ -12,19 +12,18 @@ public enum Level {
 
     private final String name;
     private final List<Mission> missions;
-    private final List<PairedCrew> pairedCrews;
+    private static final List<PairedCrew> pairedCrews = new ArrayList<>();
 
     Level(String name, List<Mission> missions) {
         this.name = name;
         this.missions = missions;
-        this.pairedCrews = new ArrayList<>();
     }
 
-    public void savePairedCrew(Crew firstCrew, Crew secondCrew) {
+    public static void savePairedCrew(String firstCrew, String secondCrew) {
         pairedCrews.add(new PairedCrew(firstCrew, secondCrew));
     }
 
-    public boolean checkAlreadyPaired(Crew firstCrew, Crew secondCrew) {
+    public static boolean checkAlreadyPaired(String firstCrew, String secondCrew) {
         for (PairedCrew pairedCrew : pairedCrews) {
             if (pairedCrew.isEqualCrews(firstCrew, secondCrew)) {
                 return true;

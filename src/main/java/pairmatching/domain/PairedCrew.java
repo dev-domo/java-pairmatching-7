@@ -3,15 +3,17 @@ package pairmatching.domain;
 import java.util.Objects;
 
 public class PairedCrew {
-    private final Crew firstCrew;
-    private final Crew secondCrew;
+    private static final String NAME_SEPARATOR = " : ";
 
-    public PairedCrew(final Crew firstCrew, final Crew secondCrew) {
+    private final String firstCrew;
+    private final String secondCrew;
+
+    public PairedCrew(final String firstCrew, final String secondCrew) {
         this.firstCrew = firstCrew;
         this.secondCrew = secondCrew;
     }
 
-    public boolean isEqualCrews(Crew firstCrew, Crew secondCrew) {
+    public boolean isEqualCrews(String firstCrew, String secondCrew) {
         return Objects.equals(this.firstCrew, firstCrew) && Objects.equals(this.secondCrew, secondCrew);
     }
 
@@ -29,5 +31,10 @@ public class PairedCrew {
     @Override
     public int hashCode() {
         return Objects.hash(firstCrew, secondCrew);
+    }
+
+    @Override
+    public String toString() {
+        return firstCrew + NAME_SEPARATOR + secondCrew;
     }
 }
