@@ -23,4 +23,13 @@ public enum Level {
     public void savePairedCrew(Crew firstCrew, Crew secondCrew) {
         pairedCrews.add(new PairedCrew(firstCrew, secondCrew));
     }
+
+    public boolean checkAlreadyPaired(Crew firstCrew, Crew secondCrew) {
+        for (PairedCrew pairedCrew : pairedCrews) {
+            if (pairedCrew.isEqualCrews(firstCrew, secondCrew)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
