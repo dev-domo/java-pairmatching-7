@@ -1,6 +1,7 @@
 package pairmatching.constant;
 
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public enum Menu {
@@ -16,6 +17,12 @@ public enum Menu {
     Menu(String number, String name) {
         this.number = number;
         this.name = name;
+    }
+
+    public static Optional<Menu> get(String number) {
+        return Arrays.stream(values())
+                .filter(menu -> menu.number.equals(number))
+                .findAny();
     }
 
     @Override
