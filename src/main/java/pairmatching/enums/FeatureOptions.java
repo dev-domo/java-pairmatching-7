@@ -1,10 +1,10 @@
 package pairmatching.enums;
 
 public enum FeatureOptions {
-    PAIR_MATCHING("1", "1. 페어 매칭\n"),
-    PAIR_CHECK("2", "2. 페어 조회\n"),
-    PAIR_RESET("3", "3. 페어 초기화\n"),
-    QUIT("Q", "종료\n");
+    PAIR_MATCHING("1", "1. 페어 매칭"),
+    PAIR_CHECK("2", "2. 페어 조회"),
+    PAIR_RESET("3", "3. 페어 초기화"),
+    QUIT("Q", "Q. 종료");
 
     private final String option;
     private final String content;

@@ -1,7 +1,7 @@
 package pairmatching.enums;
 
 public enum OutputMessage {
-    CHOICE_FEATURE("기능을 선택하세요.\n"),
+    CHOICE_FEATURE("기능을 선택하세요."),
     SEPARATOR("#############################################"),
     INTRODUCE_COURSE("과정: 백엔드 | 프론트엔드\n"),
     INTRODUCE_MISSION("미션:\n"),
