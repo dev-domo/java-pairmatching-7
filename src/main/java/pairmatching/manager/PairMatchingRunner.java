@@ -1,6 +1,7 @@
 package pairmatching.manager;
 
 import pairmatching.constant.Menu;
+import pairmatching.exception.CustomException;
 import pairmatching.view.InputView;
 import pairmatching.view.OutputView;
 
@@ -17,7 +18,15 @@ public class PairMatchingRunner {
             if (menu == Menu.QUIT) {
                 break;
             }
+            doService(menu);
+        }
+    }
+
+    private void doService(Menu menu) {
+        try {
             ServiceMapper.doService(menu);
+        } catch (CustomException e) {
+            System.out.println(e.getMessage());
         }
     }
 }
