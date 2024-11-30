@@ -41,6 +41,7 @@ public class PairMatchingController {
             if(pairMatchingService.isDuplicateMission(newPairResult)){
                 Answer answer = inputAnswer();
                 pairMatchingService.handleDuplicateMission(answer, newPairResult);
+
                 if(answer.isYes()){
                     Output.printPairMatchingResult(newPairResult); //??????/
                 }

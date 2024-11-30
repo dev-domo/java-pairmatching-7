@@ -33,12 +33,6 @@ public class PairMatchingService {
     }
 
 
-    /**
-     * 한번에 입력받기 때문에 예외처리를 서비스에서 한번에 해주는게 낫다.
-     * 만약 같은 미션이 있으면 출력하기
-     */
-
-    //note 둘 다 쓰일 수 있음, 등록하고 출력
     public PairResult makePairResult(String inputCourse, String inputLevel, String inputMission){
         Course course = Course.find(inputCourse);
         Level level = Level.find(inputLevel);
@@ -58,25 +52,7 @@ public class PairMatchingService {
         }
     }
 
-    /**
-     * 다시 매칭 = 다시먀칭
-     * 아니오면 처음부터 다시 입력받기
-     */
-
     public void matching(PairResult newPairResult,boolean isAgain){
-        /**
-         * true = 만약 중복이 된 미션이라 중복이면 해당 PairResult을 찾아서 인원만 업데이트해야하낟.
-         * false = 아예 히스토리에 새롭게 추가한다.
-         */
-        /**
-         * 1. 같은 레벨에 중복되는 매칭이 있는지?
-         * crewsByCourse에 matcher, pairResult 집어넣기
-         * 그 다음 업데ㅣ트된 pairResult를 history에서 중복되는 크루가 존재하는지 확인하기
-         */
-
-        /**
-         * 매칭이 중복되지 않았는지 확인해야됨
-         */
         int count = 3;
         while (count > 0) {
             matchByCourse(newPairResult,isAgain);
@@ -92,7 +68,6 @@ public class PairMatchingService {
     private void matchByCourse(PairResult newPairResult, boolean isAgain) {
         if(isAgain){
             Optional<PairResult> sameHistory = pairMatchingHistory.findByPairResult(newPairResult);
-            //note 초기화 해줘야ㅎ됨
             if(sameHistory.isPresent()){
                 PairResult sameHistoryResult = sameHistory.get();
                 sameHistoryResult.clearPairCrews();
@@ -102,9 +77,6 @@ public class PairMatchingService {
         }
         crewsByCourse.matchCrewPair(newPairResult,pairMemberMather);
     }
-
-
-    ////////////
 
 
     public PairResult printMatching(PairResult newPairResult){
