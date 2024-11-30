@@ -3,12 +3,16 @@ package pairmatching.domain;
 import java.util.Objects;
 
 public class Crew {
-    private Course course;
-    private String name;
+    private final Course course;
+    private final String name;
 
-    public Crew(Course course, String name) {
+    public Crew(final Course course, final String name) {
         this.course = course;
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override

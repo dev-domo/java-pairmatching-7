@@ -1,13 +1,22 @@
 package pairmatching.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Crews {
     private final List<Crew> crews;
 
     public Crews(final List<Crew> crews) {
         this.crews = crews;
+    }
+
+    public List<String> shuffleCrews() {
+        List<Crew> shuffledCrews = Randoms.shuffle(crews);
+        return shuffledCrews.stream()
+                .map(Crew::getName)
+                .collect(Collectors.toList());
     }
 
     @Override
