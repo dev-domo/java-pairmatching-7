@@ -20,5 +20,7 @@ public enum Level {
         this.pairedCrews = new ArrayList<>();
     }
 
-
+    public void savePairedCrew(Crew firstCrew, Crew secondCrew) {
+        pairedCrews.add(new PairedCrew(firstCrew, secondCrew));
+    }
 }
