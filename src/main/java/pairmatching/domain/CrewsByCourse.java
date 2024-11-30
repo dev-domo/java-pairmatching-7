@@ -3,6 +3,10 @@ package pairmatching.domain;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import pairmatching.constants.Course;
+import pairmatching.domain.helper.PairMemberMather;
+import pairmatching.domain.pair.PairMember;
+import pairmatching.domain.pair.PairResult;
 import pairmatching.domain.reader.BackendReader;
 import pairmatching.domain.reader.FrontendReader;
 
@@ -18,7 +22,24 @@ public class CrewsByCourse {
         this.frontEnd = frontEnd;
     }
 
+    public void matchCrewPair(PairResult pairResult, PairMemberMather pairMemberMather){
+        List<Crew> crews = findCrewByCourse(pairResult);
+        List<PairMember> backendResult = pairMemberMather.match(crews);
+        pairResult.addPairMember(backendResult);
+    }
 
+    private List<Crew> findCrewByCourse(PairResult pairResult){
+        if(pairResult.getCourse().equals(Course.BACKEND)){
+            return backend;
+        }else if(pairResult.getCourse().equals(Course.FRONTEND)){
+            return frontEnd;
+        }
+        return null;
+    }
+
+    public void matchFrontPair(){
+
+    }
 
 
     public static void validateDuplicates(List<Crew> backends, List<Crew> frontEnds) {

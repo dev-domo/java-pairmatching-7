@@ -12,6 +12,7 @@ public class PairMember {
         this.crews = crews;
     }
 
+
     public void validateSize(List<Crew> crews){
         if(crews.size() != 2 && crews.size() != 3){
             throw new IllegalArgumentException("패어 매칭 인원 오류");
@@ -35,6 +36,15 @@ public class PairMember {
     @Override
     public int hashCode() {
         return Objects.hash(crews);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        for(Crew crew : crews) {
+            builder.append(crew.toString());
+        }
+        return builder.toString();
     }
 
 }
