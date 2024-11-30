@@ -24,7 +24,7 @@ public class PairMatchingController {
         String[] answers = answer.split(",");
         PairMatchingMachine pairMatchingMachine;
 
-        Level level = Level.valueOf(answers[1]);
+        Level level = Level.matchLevel(answers[1]);
         if (answers[0].equals(Course.FRONTEND.getName())) {
             pairMatchingMachine = new PairMatchingMachine(backendCrews);
             pairMatchingMachine.match(level, answers[2]);
@@ -33,6 +33,6 @@ public class PairMatchingController {
         pairMatchingMachine = new PairMatchingMachine(frontendCrews);
         pairMatchingMachine.match(level, answers[2]);
 
-        outputView.showPairMatchingResult(Mission.valueOf(answers[2]).getPairedCrews());
+        outputView.showPairMatchingResult(Mission.matchMission(answers[2]).getPairedCrews());
     }
 }

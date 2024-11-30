@@ -22,6 +22,15 @@ public enum Mission {
         this.pairedCrews = new ArrayList<>();
     }
 
+    public static Mission matchMission(String missionName) {
+        for (Mission mission : Mission.values()) {
+            if (mission.name.equals(missionName)) {
+                return mission;
+            }
+        }
+        throw new IllegalArgumentException(ExceptionMessage.INVALID_ANSWER.valueOf());
+    }
+
     public void savePairedCrew(PairedCrew pairedCrew) {
         pairedCrews.add(pairedCrew);
     }

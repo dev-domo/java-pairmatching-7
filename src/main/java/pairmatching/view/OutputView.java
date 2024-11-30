@@ -29,7 +29,7 @@ public class OutputView {
 
     public void showPairMatchingResult(List<PairedCrew> pairedCrews) {
         for (PairedCrew pairedCrew : pairedCrews) {
-            System.out.println(pairedCrew.toString() + "\n");
+            System.out.println(pairedCrew.toString());
         }
     }
 
